@@ -1,10 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
+  "name": "Copybase",
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#0D9373",
@@ -17,35 +13,18 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Support Creator",
+      "url": "https://github.com/sponsors/thedevdavid"
     }
   ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "name": "API",
+      "url": "api"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "UI Components",
+      "url": "ui-components"
     }
   ],
   "navigation": [
@@ -54,38 +33,43 @@
       "pages": [
         "introduction",
         "quickstart",
-        "development"
+        "development",
+        "changelog",
+        "guides/introduction"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Multi-tenancy Guide",
+      "pages": ["guides/multi-tenancy/quick-start"]
+    },
+    {
+      "group": "UI Components",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "ui-components/account-switcher",
+        "ui-components/markdown",
+        "ui-components/code",
+        "ui-components/images",
+        "ui-components/settings",
+        "ui-components/navigation",
+        "ui-components/reusable-snippets"
       ]
     },
     {
       "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
+      "pages": ["api/introduction"]
     },
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api/endpoint/get",
+        "api/endpoint/create",
+        "api/endpoint/delete"
       ]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/thedevdavid",
+    "youtube": "https://youtube.com/@thedevdavid",
+    "github": "https://github.com/thedevdavid/copybase"
   }
 }

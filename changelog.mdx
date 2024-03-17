@@ -1,0 +1,73 @@
+---
+title: "Changelog"
+description: "Latest updates and announcements."
+---
+
+## April 2024 - Organization, multi-tenancy, and RBAC
+
+Custom code, using auth hooks, RLS, middleware, layout files, server actions, and @shadcn/ui components.
+
+_Continue reading if you're interested in the details, or [read the complete multi-tenancy guide](/guides/multi-tenancy) to implement now._
+
+### Redirects and rewrites based on account slug
+
+This is fun.
+
+```typescript middleware.ts
+const ADMIN_ROUTE = "/admin";
+let isAdmin = false;
+const isLoggedIn = user?.id;
+
+if (isLoggedIn && user?.app_metadata?.role === "staff") {
+  isAdmin = true;
+}
+
+// Non-admin users or non-logged in users cannot access /admin
+if (path.startsWith(ADMIN_ROUTE)) {
+  console.log("in app middleware - access admin route");
+
+  if (!isAdmin) {
+    // OPTIONAL: Rate-limit using Upstash. Log the attempt and block IP address after 3 attempts / 10seconds.
+    const ip = req.ip ?? "127.0.0.1";
+    const { success } = await adminRoutesRateLimit(ip);
+
+    if (!success) {
+      response = NextResponse.json(
+        { error: "Rate limit exceeded" },
+        { status: 429 }
+      );
+      return response;
+    }
+
+    return NextResponse.error();
+  }
+
+  response = NextResponse.next();
+  return response;
+}
+
+response = NextResponse.next();
+return response;
+```
+
+[Read the complete multi-tenancy guide](/guides/multi-tenancy)
+
+### Account Switcher
+
+An accessible and flexible UI component and server actions + client hooks.
+
+UI component is composing `Popover`, `Button`, and `Dialog` from @shadcn/ui.
+
+TODO: Preview GIF
+
+[See more examples](/ui-components/account-switcher)
+
+### Redirects and rewrites based on account slug
+
+Funzies.
+
+TODO: Preview GIF
+
+[See more examples](/api/account-switcher)
+
+If you have a [v0](https://v0.dev), the new components are available for generation.
